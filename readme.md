@@ -30,3 +30,17 @@ mkdir src/database/repository
 mkdir src/config
 mkdir src/utils
 ```
+
+setting index for easy require module or import as follows:
+
+```sh
+touch src/index.js
+touch src/api/index.js
+touch src/api/middlewares/index.js
+touch src/services/index.js
+touch src/database/index.js
+touch src/database/models/index.js
+touch src/database/repository/index.js
+touch src/config/index.js
+touch src/utils/index.js
+```
