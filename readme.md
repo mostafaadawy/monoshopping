@@ -185,7 +185,7 @@ having this step done we reach to our project designed for monolothic multi-tier
 
 as we use express so we need to instanciate object from it and then assign to it port to listen and make it use our routing, middlewares and other functionality, but before that it will depend on connecting to database so our first step will be to have asscussful connection to mongo and that require from us to load our configuration first so lets do it step by step:
 
-- edit our `.env` , `.env.dev` and `.env.prod` to have some deferent primary vars.
+1. edit our `.env` , `.env.dev` and `.env.prod` to have some deferent primary vars.
 
 ```sh
 cat > .env << EOL
@@ -208,3 +208,18 @@ EOL
 <p style="color:red"> Note Do not forget to add .env.dev and .dev.prod to gitignore file or simple when pushing right click on these files and chose add to ignore</p>
 
 <p style="color:yellow"> Note that in MONGOURI  we use 127.0.0.1 not localhost that is because in windows operating system it doesnt bind mongo with localhost but it binded it to 127.0.0.1 and this solve problem you may face in the next steps and this is the solution to change localhost as we did here</p>
+
+2. edit the configuration `index.js` in `config` to load .env variables to process.env
+
+```sh
+cat > src/config/index.js <<EOL
+const dotEnv = require("dotenv");
+dotEnv.config();
+console.log(process.env.PORT);
+module.exports={
+    DB_URI : process.env.MONGODB_URI
+}
+EOL
+```
+
+3. then we can test it using `node src/config/index.js` and the expected result will be 8000
