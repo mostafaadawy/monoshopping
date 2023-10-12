@@ -114,3 +114,67 @@ where `cross-env` is cross compiler/ enviroment that allow us to avoide writing 
 ### Dificulties that you may face especially for Windows Developers
 
 1. in this project our methodology is that when we run dev script it uploads dev .env variables and if other script it changes the .env used by another so in the script before running the code we set process.env.NODE_DEV to value and in the configuration we check it then upload right .env to the configuration. upon this explaination if the .env according to operating system not loaded, then all var will be undefined so using `cross-env` will solve this problem, second review the path to the new .env that you need to upload.
+
+## Second: Create our code template Files
+
+acording to our design pattern:
+
+- api for validation and middelware
+- services for every bussiness logic
+- database including our repository ODM and models
+
+and also according to the bussiness model
+
+- customer
+- shopping
+- products
+
+So for every tier (api, services, and database) we need to create for every bussness its own relative code as follows:
+
+- :
+  - express-app.js
+- Api:Middlewares
+  - auth.js
+- Api:
+  - customer.js
+  - shopping.js
+  - products.js
+- Services:
+  - customer-service.js
+  - product-service.js
+  - shopping-service.js
+- Database:Models
+  - address.js
+  - customer.js
+  - order.js
+  - product.js
+- Database:Repository
+  - customer-repository.js
+  - product-repository.js
+  - shopping-repository.js
+- Database
+  - connection.js=
+- Util:
+  - app-errors.js
+  - error-handler.js
+
+```sh
+touch src/express-app.js
+touch src/api/middlewares/auth.js
+touch src/api/customer.js
+touch src/api/shopping.js
+touch src/api/product.js
+touch src/services/customer-service.js
+touch src/services/product-service.js
+touch src/services/shopping-service.js
+touch src/database/connection.js
+touch src/database/models/address.js
+touch src/database/models/customer.js
+touch src/database/models/order.js
+touch src/database/models/product.js
+touch src/database/repository/customer-repository.js
+touch src/database/repository/shopping-repository.js
+touch src/database/repository/product-repository.js
+touch src/utils/app-errors.js
+touch src/utils/error-handler.js
+```
