@@ -91,3 +91,22 @@ cat > .gitignore << EOL
 **/node_modules
 EOL
 ```
+
+6. installing mongodb
+   1. install it locally accrding to your local machine very forward and then you do not need to credintials for logging but all what you need is to open the mongo `compass`, connect then copy the connection string that will need to connect and it is often `mongodb://localhost:27017/`
+   2. do not forget to install `mongosh` that allows you to connect through command shell
+   3. you may need to create an account on `mongo atlas` and chose your plan then keep then select the required connection which will be using node then save the connection string with the password and login name to be use through .env file later and this step for this project is optional.
+7. create the required scripts for your project by editing `package.json` and add the following scripts to be used later as follows:
+   1. dev
+   2. prod
+   3. start
+
+```sh
+"scripts": {
+    "start": "nodemon src/index.js",
+    "dev": "cross-env NODE_ENV=dev nodemon src/index.js",
+    "prod": "cross-env NODE_ENV=prod nodemon src/index.js"
+   },
+```
+
+where `cross-env` is cross compiler/ enviroment that allow us to avoide writing deferent syntax for windows or linux , and we only write as if our os is linux even if we use windows. we installed `cross-env` in development where the real servers will be linux and if we gonna use these scripts when deploying we should remove it from the begining of the script and just for knowledge if the above script is written for windows it will be something like `SET NODE_ENV=dev && nodemon src/index.js` where in linux `NODE_ENV=dev nodemon src/index.js`. and this script simply sets the `process.env` varaible called `NODE_DEV` to equal dev then run node monitor to run and watch our server.

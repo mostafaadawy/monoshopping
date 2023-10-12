@@ -4,7 +4,9 @@
   "description": "it is the monolothic version of our ecommerce project including the followinng bussiness functrions:",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon src/index.js",
+    "dev": "cross-env NODE_ENV=dev nodemon src/index.js",
+    "prod": "cross-env NODE_ENV=prod nodemon src/index.js"
   },
   "keywords": [],
   "author": "",
