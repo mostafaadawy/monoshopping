@@ -110,3 +110,7 @@ EOL
 ```
 
 where `cross-env` is cross compiler/ enviroment that allow us to avoide writing deferent syntax for windows or linux , and we only write as if our os is linux even if we use windows. we installed `cross-env` in development where the real servers will be linux and if we gonna use these scripts when deploying we should remove it from the begining of the script and just for knowledge if the above script is written for windows it will be something like `SET NODE_ENV=dev && nodemon src/index.js` where in linux `NODE_ENV=dev nodemon src/index.js`. and this script simply sets the `process.env` varaible called `NODE_DEV` to equal dev then run node monitor to run and watch our server.
+
+### Dificulties that you may face especially for Windows Developers
+
+1. in this project our methodology is that when we run dev script it uploads dev .env variables and if other script it changes the .env used by another so in the script before running the code we set process.env.NODE_DEV to value and in the configuration we check it then upload right .env to the configuration. upon this explaination if the .env according to operating system not loaded, then all var will be undefined so using `cross-env` will solve this problem, second review the path to the new .env that you need to upload.
