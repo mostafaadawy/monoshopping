@@ -1,6 +1,6 @@
 # MonoShopping
 
-it is the monolothic version of our ecommerce project including the followinng bussiness functrions:
+this project is considered the first part of an educational series to create ecommerce using expressjs and mongoo then converting to microservices, so this is the first part which represents the monolithic project that we want to convert to microservices. it is the monolothic version of our ecommerce project including the followinng bussiness functrions:
 
 - customer
 - shoppping
