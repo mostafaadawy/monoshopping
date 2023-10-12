@@ -178,3 +178,33 @@ touch src/database/repository/product-repository.js
 touch src/utils/app-errors.js
 touch src/utils/error-handler.js
 ```
+
+having this step done we reach to our project designed for monolothic multi-tier and now we gonnes explain how to add requiored functionality.
+
+## Third: Conducting Required Code to our Design Pattern
+
+as we use express so we need to instanciate object from it and then assign to it port to listen and make it use our routing, middlewares and other functionality, but before that it will depend on connecting to database so our first step will be to have asscussful connection to mongo and that require from us to load our configuration first so lets do it step by step:
+
+- edit our `.env` , `.env.dev` and `.env.prod` to have some deferent primary vars.
+
+```sh
+cat > .env << EOL
+APP_SECRET ='supersecret'
+MONGODB_URI="mongodb://127.0.0.1:27017/amazon_demo"
+PORT=8000
+EOL
+cat > .env.dev << EOL
+APP_SECRET ='supersecret'
+MONGODB_URI="mongodb://127.0.0.1:27017/amazon_demo"
+PORT=8001
+EOL
+cat > .env.prod << EOL
+APP_SECRET ='supersecret'
+MONGODB_URI="mongodb://127.0.0.1:27017/amazon_demo"
+PORT=8002
+EOL
+```
+
+<p style="color:red"> Note Do not forget to add .env.dev and .dev.prod to gitignore file or simple when pushing right click on these files and chose add to ignore</p>
+
+<p style="color:yellow"> Note that in MONGOURI  we use 127.0.0.1 not localhost that is because in windows operating system it doesnt bind mongo with localhost but it binded it to 127.0.0.1 and this solve problem you may face in the next steps and this is the solution to change localhost as we did here</p>
